@@ -3,147 +3,506 @@
 <head>
 
 <title>Nexora AI</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
 *{
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial, sans-serif;
 }
 
 body{
 margin:0;
 background:#ffffff;
-overflow:hidden;
+color:#202124;
+transition:.3s;
 }
 
+
+/* SIDEBAR */
+
 .sidebar{
+
 position:fixed;
 left:0;
 top:0;
-width:240px;
+
+width:250px;
 height:100vh;
+
 background:#f8f9fa;
 border-right:1px solid #ddd;
+
 padding:20px;
+
 }
+
+
 
 .newchat{
+
 width:100%;
 padding:15px;
+
 border-radius:20px;
-background:white;
+
 border:1px solid #ddd;
+
+background:white;
+
+cursor:pointer;
+
 font-size:16px;
+
 }
 
+
+
 .menu{
+
 margin-top:30px;
-line-height:3;
-color:#555;
+
 }
+
+
+.menu button{
+
+width:100%;
+
+padding:12px;
+
+margin:5px 0;
+
+border:none;
+
+background:transparent;
+
+text-align:left;
+
+font-size:16px;
+
+cursor:pointer;
+
+border-radius:12px;
+
+}
+
+
+.menu button:hover{
+
+background:#e8eaed;
+
+}
+
+
+
+
+/* MAIN */
 
 
 .main{
-margin-left:240px;
+
+margin-left:250px;
+
 height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
 }
+
+
 
 
 .header{
 
-height:70px;
+height:80px;
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
 padding:20px;
-font-size:32px;
+
+}
+
+
+
+
+.logo{
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:30px;
+
+color:white;
+
+background:linear-gradient(135deg,#4285f4,#9333ea,#22c55e);
+
+animation:spin 4s linear infinite;
+
+}
+
+
+
+@keyframes spin{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+
+
+.title{
+
+font-size:34px;
+
 font-weight:bold;
 
 background:linear-gradient(90deg,#4285f4,#9333ea);
+
 -webkit-background-clip:text;
+
 color:transparent;
 
 }
 
 
-#botpress{
 
-height:calc(100vh - 70px);
+/* CHAT */
+
+.chat{
+
+flex:1;
+
+overflow:auto;
+
+padding:30px;
+
+}
+
+
+.welcome{
+
+text-align:center;
+
+margin-top:80px;
+
+}
+
+
+.welcome h1{
+
+font-size:42px;
+
+}
+
+
+
+/* BOTPRESS AREA */
+
+
+#webchat-container{
+
 width:100%;
 
-}
+height:calc(100vh - 80px);
 
-
-iframe{
-
-width:100%;
-height:100%;
-border:0;
+position:relative;
 
 }
 
 
-@media(max-width:700px){
 
-.sidebar{
-display:none;
-}
+/* hide floating */
 
-.main{
-margin-left:0;
-}
+.bpFab{
+
+display:none!important;
 
 }
 
+
+.bpWebchat{
+
+width:100%!important;
+
+height:100%!important;
+
+max-width:none!important;
+
+max-height:none!important;
+
+}
+
+
+
+</style>
 </style>
 
 </head>
 
-
 <body>
 
 
+<!-- SIDEBAR -->
+
 <div class="sidebar">
 
-<button class="newchat">
+<button class="newchat" onclick="newChat()">
 ＋ New Chat
 </button>
 
 
 <div class="menu">
 
+
+<button onclick="openImages()">
 🖼️ Images
+</button>
 
-<br>
 
+<button onclick="openLibrary()">
 📚 Library
+</button>
 
-<br>
 
+<button onclick="openSettings()">
 ⚙️ Settings
+</button>
+
 
 </div>
 
 </div>
 
 
+
+<!-- MAIN -->
 
 <div class="main">
 
+
 <div class="header">
+
+
+<div class="logo">
+✦
+</div>
+
+
+<div class="title">
 Nexora AI
 </div>
 
 
-<div id="botpress">
+</div>
 
-<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json">
+
+
+<div id="webchat-container">
+
+
+<iframe 
+src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json"
+style="width:100%;height:100%;border:0;">
 </iframe>
 
+
 </div>
 
 
+
 </div>
+
+
+
+
+
+<!-- SETTINGS -->
+
+<div id="settings" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 20px #aaa;
+">
+
+
+<h2>
+Settings
+</h2>
+
+
+<button onclick="lightMode()">
+☀️ Light Mode
+</button>
+
+
+<br><br>
+
+
+<button onclick="darkMode()">
+🌙 Dark Mode
+</button>
+
+
+<br><br>
+
+
+<button onclick="closeSettings()">
+Close
+</button>
+
+
+</div>
+
+
+
+
+<!-- IMAGE BOX -->
+
+
+<div id="images" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 20px #aaa;
+">
+
+
+<h2>
+Image Upload
+</h2>
+
+
+<input type="file" accept="image/*">
+
+
+<p>
+Upload image and ask Botpress about it.
+</p>
+
+
+<button onclick="closeImages()">
+Close
+</button>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+function newChat(){
+
+alert("New chat started 🚀");
+
+}
+
+
+
+
+
+function openSettings(){
+
+document.getElementById("settings").style.display="block";
+
+}
+
+
+function closeSettings(){
+
+document.getElementById("settings").style.display="none";
+
+}
+
+
+
+function darkMode(){
+
+document.body.style.background="#202124";
+
+document.body.style.color="white";
+
+}
+
+
+
+function lightMode(){
+
+document.body.style.background="white";
+
+document.body.style.color="#202124";
+
+}
+
+
+
+
+function openImages(){
+
+document.getElementById("images").style.display="block";
+
+}
+
+
+function closeImages(){
+
+document.getElementById("images").style.display="none";
+
+}
+
+
+
+function openLibrary(){
+
+alert("Library coming soon 📚");
+
+}
+
+
+
+</script>
+
+
 
 
 </body>
+
 </html>
