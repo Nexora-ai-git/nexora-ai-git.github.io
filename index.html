@@ -3,143 +3,86 @@
 <head>
 <title>Nexora AI</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-*{
-box-sizing:border-box;
-font-family:Arial,sans-serif
-}
-
-body{
-margin:0;
-background:white;
-color:#202124;
-overflow:hidden
-}
-
-.sidebar{
-position:fixed;
-left:0;
-top:0;
-width:120px;
-height:100vh;
-padding:6px;
-background:#f8f9fa;
-border-right:1px solid #ddd
-}
-
-.new{
-width:90px;
-height:32px;
-border-radius:12px;
-border:1px solid #ddd;
-background:white;
-font-size:11px;
-font-weight:bold;
-white-space:nowrap;
-cursor:pointer
-}
-
-.menu{
-margin-top:15px
-}
-
-.menu button{
-width:90px;
-height:32px;
-margin:4px 0;
-border:0;
-background:transparent;
-border-radius:10px;
-font-size:11px;
-text-align:left;
-cursor:pointer;
-white-space:nowrap
-}
-
-.menu button:hover{
-background:#e8eaed
-}
-
-.main{
-margin-left:120px;
-height:100vh;
-display:flex;
-flex-direction:column
-}
-
-.header{
-height:65px;
-display:flex;
-align-items:center;
-gap:10px;
-padding:10px
-}
-
-.logo{
-width:45px;
-height:45px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:24px;
-color:white;
-background:linear-gradient(135deg,#4285f4,#9333ea,#22c55e)
-}
-
-.title{
-font-size:28px;
-font-weight:800;
-background:linear-gradient(90deg,#4285f4,#9333ea);
--webkit-background-clip:text;
-color:transparent
-}
-
-.chat{
-flex:1;
-min-height:0
-}
-
-iframe{
-width:100%;
-height:100%;
-border:0
-}
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;color:#202124;transition:.3s}
+.dark{background:#181818;color:white}
+.side{position:fixed;left:-220px;top:0;width:220px;height:100vh;padding:15px;background:#f8f9fa;z-index:5;transition:.3s}
+.dark .side{background:#252525}
+.side.open{left:0}
+button{width:100%;padding:12px;margin:5px 0;border:0;border-radius:12px;background:transparent;text-align:left}
+button:hover{background:#ddd}
+.top{height:65px;display:flex;align-items:center;gap:12px;padding:10px 15px}
+.menu{font-size:20px;cursor:pointer}
+.logo{width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;background:linear-gradient(135deg,#4285f4,#9333ea,#22c55e);font-size:24px}
+.title{font-family:Inter;font-size:30px;font-weight:500;background:linear-gradient(90deg,#4285f4,#9333ea);-webkit-background-clip:text;color:transparent}
+iframe{width:100%;height:calc(100vh - 65px);border:0}
+.page{display:none;padding:25px}
+.card{padding:15px;border-radius:15px;background:#f2f2f2;margin:10px 0}
+.dark .card{background:#292929}
 </style>
-
 </head>
 
 <body>
 
-<div class="sidebar">
-
-<button class="new">＋ New Chat</button>
-
-<div class="menu">
+<div class="side" id="side">
+<button onclick="closeMenu()">← Back</button>
+<button onclick="newChat()">＋ New Chat</button>
 <button>🖼️ Images</button>
 <button>📚 Library</button>
 <button>💻 CodeX</button>
 <button>📁 Projects</button>
-<button>⭐ More</button>
-<button>⚙️ Settings</button>
+<button onclick="openSettings()">⚙️ Settings</button>
 </div>
 
-</div>
-
-
-<div class="main">
-
-<div class="header">
+<div id="home">
+<div class="top">
+<div class="menu" onclick="menu()">☰</div>
 <div class="logo">✦</div>
 <div class="title">Nexora AI</div>
 </div>
 
-<div class="chat">
-<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json"></iframe>
+<iframe id="frame" src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json"></iframe>
 </div>
 
+
+<div class="page" id="settings">
+<h1>Settings</h1>
+
+<div class="card">
+<h3>👤 Account</h3>
+<p>Username: User 1</p>
+<p>Plan: Free</p>
 </div>
+
+<div class="card">
+<h3>🎨 Appearance</h3>
+<button onclick="white()">⚪ White Mode</button>
+<button onclick="black()">⚫ Black Mode</button>
+</div>
+
+<div class="card">
+<h3>⚙️ Preferences</h3>
+<p>Notifications: ON</p>
+<p>Chat History: ON</p>
+<p>Auto Save: ON</p>
+</div>
+
+<button onclick="back()">← Return Chat</button>
+</div>
+
+
+<script>
+function menu(){side.classList.toggle("open")}
+function closeMenu(){side.classList.remove("open")}
+function newChat(){frame.src=frame.src}
+function openSettings(){home.style.display="none";settings.style.display="block";closeMenu()}
+function back(){settings.style.display="none";home.style.display="block"}
+function black(){document.body.classList.add("dark")}
+function white(){document.body.classList.remove("dark")}
+</script>
 
 </body>
 </html>
