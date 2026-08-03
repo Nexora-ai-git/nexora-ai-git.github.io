@@ -3,116 +3,96 @@
 <head>
 
 <title>Nexora AI</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
-body {
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#ffffff,#eef2ff);
-    color:#202124;
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+margin:0;
+background:#ffffff;
+overflow:hidden;
+}
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:240px;
+height:100vh;
+background:#f8f9fa;
+border-right:1px solid #ddd;
+padding:20px;
+}
+
+.newchat{
+width:100%;
+padding:15px;
+border-radius:20px;
+background:white;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+.menu{
+margin-top:30px;
+line-height:3;
+color:#555;
 }
 
 
-.container {
-    max-width:850px;
-    margin:auto;
-    padding:30px;
+.main{
+margin-left:240px;
+height:100vh;
 }
 
 
-/* Logo */
+.header{
 
-.brand {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:15px;
-    margin-top:30px;
-}
-
-
-.ai-logo {
-    width:75px;
-    height:75px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:40px;
-    color:white;
-    background:linear-gradient(135deg,#4285f4,#9333ea);
-    box-shadow:0 0 35px #4285f4;
-    animation:float 2s infinite ease-in-out;
-}
-
-
-@keyframes float {
-
-0%,100% {
-transform:translateY(0);
-}
-
-50% {
-transform:translateY(-12px);
-}
-
-}
-
-
-.brand-name {
-
-font-size:45px;
-font-weight:700;
+height:70px;
+padding:20px;
+font-size:32px;
+font-weight:bold;
 
 background:linear-gradient(90deg,#4285f4,#9333ea);
-
 -webkit-background-clip:text;
-
 color:transparent;
 
 }
 
 
+#botpress{
 
-.tagline {
-
-text-align:center;
-font-size:18px;
-color:#666;
-margin-top:10px;
+height:calc(100vh - 70px);
+width:100%;
 
 }
 
 
+iframe{
 
-/* Info cards */
-
-.cards {
-
-display:flex;
-gap:15px;
-justify-content:center;
-margin-top:40px;
-flex-wrap:wrap;
+width:100%;
+height:100%;
+border:0;
 
 }
 
 
-.card {
+@media(max-width:700px){
 
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 5px 20px #0002;
-width:200px;
-text-align:center;
-
+.sidebar{
+display:none;
 }
 
+.main{
+margin-left:0;
+}
 
+}
 
 </style>
 
@@ -122,334 +102,47 @@ text-align:center;
 <body>
 
 
-<div class="container">
+<div class="sidebar">
+
+<button class="newchat">
+＋ New Chat
+</button>
 
 
-<div class="brand">
+<div class="menu">
 
-<div class="ai-logo">
-✦
+🖼️ Images
+
+<br>
+
+📚 Library
+
+<br>
+
+⚙️ Settings
+
+</div>
+
 </div>
 
 
-<div class="brand-name">
+
+<div class="main">
+
+<div class="header">
 Nexora AI
 </div>
 
 
-</div>
+<div id="botpress">
 
-
-
-<p class="tagline">
-Your intelligent AI assistant
-</p>
-
-
-
-<div class="cards">
-
-
-<div class="card">
-🤖
-<br>
-AI Assistant
-</div>
-
-
-<div class="card">
-💡
-<br>
-Smart Answers
-</div>
-
-
-<div class="card">
-🚀
-<br>
-Future Technology
-</div>
-
+<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json">
+</iframe>
 
 </div>
 
 
-
 </div>
-
-
-
-<!-- Botpress AI Chatbot -->
-
-<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-
-<script src="https://files.bpcontent.cloud/2026/08/03/00/20260803003137-NQIMIKVC.js" defer></script>
-
-
-</body>
-
-</html>    width:75px;
-    height:75px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:42px;
-    color:white;
-    background:linear-gradient(135deg,#4285f4,#9333ea);
-    box-shadow:0 0 35px #4285f4;
-    animation:float 2s infinite ease-in-out;
-}
-
-
-@keyframes float {
-
-    0%,100% {
-        transform:translateY(0);
-    }
-
-    50% {
-        transform:translateY(-12px);
-    }
-
-}
-
-
-.brand-name {
-
-    font-size:45px;
-    font-weight:700;
-    background:linear-gradient(90deg,#4285f4,#9333ea);
-    -webkit-background-clip:text;
-    color:transparent;
-
-}
-
-
-.tagline {
-
-    text-align:center;
-    color:#666;
-    font-size:18px;
-    margin-top:10px;
-
-}
-
-
-/* Chat */
-
-.chatbox {
-
-    margin-top:40px;
-    height:430px;
-    background:white;
-    border-radius:25px;
-    padding:25px;
-    box-shadow:0 10px 30px #0002;
-    overflow-y:auto;
-
-}
-
-
-.message {
-
-    padding:14px 18px;
-    margin:12px 0;
-    border-radius:20px;
-    max-width:75%;
-    line-height:1.4;
-
-}
-
-
-.ai {
-
-    background:#f1f3f4;
-
-}
-
-
-.user {
-
-    background:#dbeafe;
-    margin-left:auto;
-    text-align:right;
-
-}
-
-
-/* Input */
-
-.input-area {
-
-    display:flex;
-    margin-top:20px;
-
-}
-
-
-input {
-
-    flex:1;
-    padding:18px;
-    border-radius:30px;
-    border:1px solid #ddd;
-    font-size:16px;
-    outline:none;
-
-}
-
-
-button {
-
-    margin-left:10px;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    border:none;
-    background:#4285f4;
-    color:white;
-    font-size:22px;
-    cursor:pointer;
-
-}
-
-
-button:hover {
-
-    transform:scale(1.05);
-
-}
-
-
-@media(max-width:600px){
-
-.brand-name{
-    font-size:35px;
-}
-
-.ai-logo{
-    width:60px;
-    height:60px;
-}
-
-.container{
-    padding:15px;
-}
-
-}
-
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<div class="container">
-
-
-<div class="brand">
-
-<div class="ai-logo">
-✦
-</div>
-
-<div class="brand-name">
-Nexora AI
-</div>
-
-</div>
-
-
-<p class="tagline">
-Your intelligent AI assistant
-</p>
-
-
-
-<div class="chatbox" id="chat">
-
-
-<div class="message ai">
-Hello 👋 I am Nexora AI.<br>
-How can I help you today?
-</div>
-
-
-</div>
-
-
-
-<div class="input-area">
-
-<input id="input" placeholder="Ask Nexora anything...">
-
-<button onclick="send()">➤</button>
-
-</div>
-
-
-
-</div>
-
-
-
-<script>
-
-
-function send(){
-
-
-let input=document.getElementById("input");
-let chat=document.getElementById("chat");
-
-
-let text=input.value.trim();
-
-
-if(text=="") return;
-
-
-
-chat.innerHTML +=
-"<div class='message user'>"+text+"</div>";
-
-
-
-let typing=document.createElement("div");
-
-typing.className="message ai";
-
-typing.innerHTML="Nexora is thinking... 🤖";
-
-chat.appendChild(typing);
-
-
-
-setTimeout(()=>{
-
-
-typing.innerHTML=
-"Thanks for asking! I am Nexora AI demo. My intelligence is growing 🚀";
-
-
-chat.scrollTop=chat.scrollHeight;
-
-
-},1000);
-
-
-
-input.value="";
-
-
-}
-
-
-</script>
 
 
 </body>
