@@ -1,39 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Nexora AI</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <style>
-
-*{
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+*{box-sizing:border-box;font-family:Arial,sans-serif}
 
 body{
 margin:0;
-background:#ffffff;
+background:#fff;
 color:#202124;
-transition:.3s;
+transition:.3s
 }
-
-
-/* SIDEBAR */
 
 .sidebar{
 position:fixed;
-left:0;
-top:0;
 width:250px;
 height:100vh;
+padding:18px;
 background:#f8f9fa;
-border-right:1px solid #ddd;
-padding:20px;
+border-right:1px solid #ddd
 }
-
 
 .newchat{
 width:100%;
@@ -41,403 +29,257 @@ padding:14px;
 border-radius:20px;
 border:1px solid #ddd;
 background:white;
-font-size:16px;
-cursor:pointer;
+font-weight:bold;
+cursor:pointer
 }
 
-
-.menu{
-margin-top:25px;
-}
-
+.menu{margin-top:25px}
 
 .menu button{
-
 width:100%;
-padding:13px;
-
-margin:6px 0;
-
+padding:12px;
+margin:5px 0;
 border:0;
-
-background:transparent;
-
+background:none;
 text-align:left;
-
-font-size:16px;
-
 border-radius:12px;
-
-cursor:pointer;
-
+font-size:15px;
+cursor:pointer
 }
-
 
 .menu button:hover{
-background:#e8eaed;
+background:#e8eaed
 }
-
-
-
-/* MAIN */
 
 .main{
 margin-left:250px;
 height:100vh;
 display:flex;
-flex-direction:column;
+flex-direction:column
 }
-
-
 
 .header{
-
 height:80px;
-
 display:flex;
-
 align-items:center;
-
 gap:15px;
-
-padding:20px;
-
+padding:15px
 }
-
-
 
 .logo{
-
 width:55px;
-
 height:55px;
-
 border-radius:50%;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 font-size:30px;
-
 color:white;
-
 background:linear-gradient(135deg,#4285f4,#9333ea,#22c55e);
-
-animation:spin 4s linear infinite;
-
+box-shadow:0 0 25px #9333ea;
+animation:move 3s infinite
 }
 
-
-@keyframes spin{
-
-from{
-transform:rotate(0deg);
+@keyframes move{
+50%{transform:translateY(-6px) rotate(180deg)}
 }
-
-to{
-transform:rotate(360deg);
-}
-
-}
-
-
-
 
 .title{
-
-font-size:34px;
-
-font-weight:700;
-
+font-size:36px;
+font-weight:800;
 letter-spacing:-1px;
-
 background:linear-gradient(90deg,#4285f4,#9333ea,#22c55e);
-
 -webkit-background-clip:text;
-
-color:transparent;
-
+background-clip:text;
+color:transparent
 }
 
+.welcome{
+text-align:center;
+padding:15px
+}
 
+.welcome h1{
+font-size:38px;
+margin:10px
+}
 
-/* BOTPRESS */
+.welcome p{
+color:#666;
+font-size:17px
+}
+
+.cards{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap
+}
+
+.card{
+padding:14px 20px;
+background:white;
+border:1px solid #ddd;
+border-radius:18px;
+cursor:pointer
+}
+
+.card:hover{
+box-shadow:0 5px 20px #ddd
+}
 
 #webchat-container{
-
-width:100%;
-
-height:calc(100vh - 80px);
-
+flex:1
 }
-
 
 iframe{
-
 width:100%;
-
 height:100%;
-
-border:0;
-
+border:0
 }
-
-
-
-/* SETTINGS */
 
 #settings{
-
 display:none;
-
 position:fixed;
-
 top:50%;
-
 left:50%;
-
 transform:translate(-50%,-50%);
-
 background:white;
-
 padding:25px;
-
 border-radius:20px;
-
-box-shadow:0 0 20px #999;
-
-z-index:99;
-
+box-shadow:0 10px 40px #999;
+z-index:10
 }
-
 
 #settings button{
-
-padding:12px;
-
+padding:12px 18px;
 border-radius:15px;
-
 border:1px solid #ddd;
-
 background:white;
-
-cursor:pointer;
-
+cursor:pointer
 }
-
-
-
-/* DARK */
 
 .dark{
-
 background:#202124;
-
-color:white;
-
+color:white
 }
-
 
 .dark .sidebar{
-
 background:#171717;
-
-border-color:#333;
-
+border-color:#333
 }
-
 
 .dark .newchat,
+.dark .card,
 .dark #settings{
-
 background:#303134;
-
-color:white;
-
+color:white
 }
 
+.dark .menu button{
+color:white
+}
 
 </style>
-
 </head>
-
 
 <body>
 
-
-
 <div class="sidebar">
 
-
-<button class="newchat" onclick="newChat()">
+<button class="newchat" onclick="location.reload()">
 ＋ New Chat
 </button>
 
-
-
 <div class="menu">
 
-
-<button>
-🖼️ Images
-</button>
-
-
-<button>
-📚 Library
-</button>
-
-
-<button>
-💻 CodeX
-</button>
-
-
-<button>
-📁 Projects
-</button>
-
-
-<button>
-⋯ More
-</button>
-
+<button>🖼️ Images</button>
+<button>📚 Library</button>
+<button>💻 CodeX</button>
+<button>📁 Projects</button>
+<button>⭐ Favorites</button>
+<button>🕘 History</button>
+<button>⋯ More</button>
 
 <button onclick="openSettings()">
 ⚙️ Settings
 </button>
 
-
 </div>
-
-
 </div>
-
-
-
 
 
 <div class="main">
 
-
 <div class="header">
-
-
-<div class="logo">
-✦
+<div class="logo">✦</div>
+<div class="title">Nexora AI</div>
 </div>
 
+<div class="welcome">
 
-<div class="title">
-Nexora AI
+<h1>Hi there 👋</h1>
+
+<p>
+How can Nexora help you today?<br>
+Ask anything, create anything, or explore ideas.
+</p>
+
+<div class="cards">
+<div class="card">✍️ Write</div>
+<div class="card">💡 Ideas</div>
+<div class="card">💻 Code</div>
+<div class="card">📚 Learn</div>
 </div>
 
-
 </div>
-
 
 
 <div id="webchat-container">
 
-
-<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json">
-</iframe>
-
+<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json"></iframe>
 
 </div>
 
-
-
 </div>
-
-
-
-
 
 
 <div id="settings">
 
+<h2>Settings</h2>
 
-<h2>
-Settings
-</h2>
-
-
-<button onclick="lightMode()">
-☀️ Light Mode
-</button>
-
+<button onclick="lightMode()">☀️ Light Mode</button>
 
 <br><br>
 
-
-<button onclick="darkMode()">
-🌙 Dark Mode
-</button>
-
+<button onclick="darkMode()">🌙 Dark Mode</button>
 
 <br><br>
 
-
-<button onclick="closeSettings()">
-Close
-</button>
-
+<button onclick="closeSettings()">Close</button>
 
 </div>
 
 
-
-
-
-
 <script>
 
-
-function newChat(){
-
-location.reload();
-
-}
-
-
-
 function openSettings(){
-
 document.getElementById("settings").style.display="block";
-
 }
-
 
 function closeSettings(){
-
 document.getElementById("settings").style.display="none";
-
 }
-
-
 
 function darkMode(){
-
 document.body.classList.add("dark");
-
 }
-
-
 
 function lightMode(){
-
 document.body.classList.remove("dark");
-
 }
 
-
 </script>
-
-
 
 </body>
 </html>
