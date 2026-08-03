@@ -6,43 +6,81 @@
 
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:#fff;color:#202124;transition:.3s}
+
+body{
+margin:0;
+background:#fff;
+color:#202124;
+}
 
 .sidebar{
-position:fixed;left:0;top:0;width:240px;height:100vh;
-padding:18px;background:#f8f9fa;border-right:1px solid #ddd
+position:fixed;
+left:0;
+top:0;
+width:250px;
+height:100vh;
+padding:20px;
+background:#f8f9fb;
+border-right:1px solid #ddd;
 }
 
 .new{
-width:100%;padding:14px;border-radius:20px;
-border:1px solid #ddd;background:white;font-weight:bold
+width:100%;
+padding:15px;
+border-radius:18px;
+border:1px solid #ddd;
+background:#fff;
+font-weight:bold;
+cursor:pointer;
 }
 
-.menu{margin-top:25px}
+.menu{
+margin-top:25px;
+}
+
 .menu button{
-width:100%;padding:12px;margin:5px 0;
-border:0;background:none;text-align:left;
-border-radius:12px;cursor:pointer
+width:100%;
+padding:13px;
+margin:5px 0;
+border:0;
+background:transparent;
+border-radius:14px;
+text-align:left;
+font-size:15px;
+cursor:pointer;
 }
 
-.menu button:hover{background:#e8eaed}
+.menu button:hover{
+background:#e8eefc;
+}
 
 .main{
-margin-left:240px;height:100vh;
-display:flex;flex-direction:column
+margin-left:250px;
+height:100vh;
+display:flex;
+flex-direction:column;
 }
 
 .header{
-height:75px;display:flex;
-align-items:center;gap:15px;padding:12px
+height:80px;
+display:flex;
+align-items:center;
+gap:15px;
+padding:15px 25px;
 }
 
 .logo{
-width:52px;height:52px;border-radius:50%;
-display:flex;align-items:center;justify-content:center;
-font-size:28px;color:white;
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:white;
 background:linear-gradient(135deg,#4285f4,#9333ea,#22c55e);
-animation:spin 3s infinite
+box-shadow:0 0 20px #9333ea;
+animation:spin 3s infinite;
 }
 
 @keyframes spin{
@@ -50,51 +88,50 @@ animation:spin 3s infinite
 }
 
 .title{
-font-size:34px;font-weight:800;
-background:linear-gradient(90deg,#4285f4,#9333ea,#22c55e);
--webkit-background-clip:text;color:transparent
-}
-
-.welcome{
-text-align:center;padding:10px
-}
-
-.welcome h1{
-font-size:32px;margin:5px
-}
-
-.welcome p{
-color:#666
+font-size:36px;
+font-weight:800;
+background:linear-gradient(90deg,#4285f4,#9333ea);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 .chat{
-flex:1;min-height:0
+flex:1;
+min-height:0;
 }
 
 iframe{
-width:100%;height:100%;
-border:0;display:block
+width:100%;
+height:100%;
+border:0;
+display:block;
 }
 
-#settings{
-display:none;
-position:fixed;
-top:50%;left:50%;
-transform:translate(-50%,-50%);
-background:white;padding:25px;
-border-radius:20px;
-box-shadow:0 10px 30px #999
+@media(max-width:700px){
+
+.sidebar{
+width:75px;
+padding:10px;
 }
 
-#settings button{
-padding:12px;border-radius:15px
+.menu button,.new{
+font-size:0;
 }
 
-.dark{background:#202124;color:white}
-.dark .sidebar{background:#171717}
-.dark .new,.dark #settings{background:#303134;color:white}
-.dark .menu button{color:white}
+.main{
+margin-left:75px;
+}
 
+.title{
+font-size:24px;
+}
+
+.logo{
+width:45px;
+height:45px;
+}
+
+}
 </style>
 </head>
 
@@ -102,15 +139,19 @@ padding:12px;border-radius:15px
 
 <div class="sidebar">
 
-<button class="new" onclick="location.reload()">＋ New Chat</button>
+<button class="new">
+＋ New Chat
+</button>
 
 <div class="menu">
+
 <button>🖼️ Images</button>
 <button>📚 Library</button>
 <button>💻 CodeX</button>
 <button>📁 Projects</button>
-<button>⋯ More</button>
-<button onclick="openSet()">⚙️ Settings</button>
+<button>⭐ More</button>
+<button>⚙️ Settings</button>
+
 </div>
 
 </div>
@@ -119,58 +160,24 @@ padding:12px;border-radius:15px
 <div class="main">
 
 <div class="header">
+
 <div class="logo">✦</div>
-<div class="title">Nexora AI</div>
+
+<div class="title">
+Nexora AI
 </div>
 
-
-<div class="welcome">
-<h1>Hi there 👋</h1>
-<p>How can Nexora help you today?</p>
 </div>
 
 
 <div class="chat">
 
-<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json"></iframe>
+<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json">
+</iframe>
 
 </div>
 
 </div>
-
-
-<div id="settings">
-
-<h2>Settings</h2>
-
-<button onclick="dark()">🌙 Dark Mode</button>
-<br><br>
-<button onclick="light()">☀️ Light Mode</button>
-<br><br>
-<button onclick="closeSet()">Close</button>
-
-</div>
-
-
-<script>
-
-function openSet(){
-settings.style.display="block";
-}
-
-function closeSet(){
-settings.style.display="none";
-}
-
-function dark(){
-document.body.classList.add("dark");
-}
-
-function light(){
-document.body.classList.remove("dark");
-}
-
-</script>
 
 </body>
 </html>
