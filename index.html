@@ -10,7 +10,7 @@
 
 *{
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
@@ -24,58 +24,41 @@ transition:.3s;
 /* SIDEBAR */
 
 .sidebar{
-
 position:fixed;
 left:0;
 top:0;
-
 width:250px;
 height:100vh;
-
 background:#f8f9fa;
 border-right:1px solid #ddd;
-
 padding:20px;
-
 }
-
 
 
 .newchat{
-
 width:100%;
-padding:15px;
-
+padding:14px;
 border-radius:20px;
-
 border:1px solid #ddd;
-
 background:white;
-
-cursor:pointer;
-
 font-size:16px;
-
+cursor:pointer;
 }
 
 
-
 .menu{
-
-margin-top:30px;
-
+margin-top:25px;
 }
 
 
 .menu button{
 
 width:100%;
+padding:13px;
 
-padding:12px;
+margin:6px 0;
 
-margin:5px 0;
-
-border:none;
+border:0;
 
 background:transparent;
 
@@ -83,37 +66,27 @@ text-align:left;
 
 font-size:16px;
 
-cursor:pointer;
-
 border-radius:12px;
+
+cursor:pointer;
 
 }
 
 
 .menu button:hover{
-
 background:#e8eaed;
-
 }
-
 
 
 
 /* MAIN */
 
-
 .main{
-
 margin-left:250px;
-
 height:100vh;
-
 display:flex;
-
 flex-direction:column;
-
 }
-
 
 
 
@@ -130,7 +103,6 @@ gap:15px;
 padding:20px;
 
 }
-
 
 
 
@@ -159,14 +131,13 @@ animation:spin 4s linear infinite;
 }
 
 
-
 @keyframes spin{
 
-0%{
+from{
 transform:rotate(0deg);
 }
 
-100%{
+to{
 transform:rotate(360deg);
 }
 
@@ -174,13 +145,16 @@ transform:rotate(360deg);
 
 
 
+
 .title{
 
 font-size:34px;
 
-font-weight:bold;
+font-weight:700;
 
-background:linear-gradient(90deg,#4285f4,#9333ea);
+letter-spacing:-1px;
+
+background:linear-gradient(90deg,#4285f4,#9333ea,#22c55e);
 
 -webkit-background-clip:text;
 
@@ -190,38 +164,7 @@ color:transparent;
 
 
 
-/* CHAT */
-
-.chat{
-
-flex:1;
-
-overflow:auto;
-
-padding:30px;
-
-}
-
-
-.welcome{
-
-text-align:center;
-
-margin-top:80px;
-
-}
-
-
-.welcome h1{
-
-font-size:42px;
-
-}
-
-
-
-/* BOTPRESS AREA */
-
+/* BOTPRESS */
 
 #webchat-container{
 
@@ -229,62 +172,137 @@ width:100%;
 
 height:calc(100vh - 80px);
 
-position:relative;
+}
+
+
+iframe{
+
+width:100%;
+
+height:100%;
+
+border:0;
 
 }
 
 
 
-/* hide floating */
+/* SETTINGS */
 
-.bpFab{
+#settings{
 
-display:none!important;
+display:none;
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 0 20px #999;
+
+z-index:99;
 
 }
 
 
-.bpWebchat{
+#settings button{
 
-width:100%!important;
+padding:12px;
 
-height:100%!important;
+border-radius:15px;
 
-max-width:none!important;
+border:1px solid #ddd;
 
-max-height:none!important;
+background:white;
+
+cursor:pointer;
 
 }
 
 
 
-</style>
+/* DARK */
+
+.dark{
+
+background:#202124;
+
+color:white;
+
+}
+
+
+.dark .sidebar{
+
+background:#171717;
+
+border-color:#333;
+
+}
+
+
+.dark .newchat,
+.dark #settings{
+
+background:#303134;
+
+color:white;
+
+}
+
+
 </style>
 
 </head>
 
+
 <body>
 
 
-<!-- SIDEBAR -->
 
 <div class="sidebar">
+
 
 <button class="newchat" onclick="newChat()">
 ＋ New Chat
 </button>
 
 
+
 <div class="menu">
 
 
-<button onclick="openImages()">
+<button>
 🖼️ Images
 </button>
 
 
-<button onclick="openLibrary()">
+<button>
 📚 Library
+</button>
+
+
+<button>
+💻 CodeX
+</button>
+
+
+<button>
+📁 Projects
+</button>
+
+
+<button>
+⋯ More
 </button>
 
 
@@ -295,11 +313,12 @@ max-height:none!important;
 
 </div>
 
+
 </div>
 
 
 
-<!-- MAIN -->
+
 
 <div class="main">
 
@@ -324,9 +343,7 @@ Nexora AI
 <div id="webchat-container">
 
 
-<iframe 
-src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json"
-style="width:100%;height:100%;border:0;">
+<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json">
 </iframe>
 
 
@@ -340,19 +357,8 @@ style="width:100%;height:100%;border:0;">
 
 
 
-<!-- SETTINGS -->
 
-<div id="settings" style="
-display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 0 20px #aaa;
-">
+<div id="settings">
 
 
 <h2>
@@ -386,44 +392,6 @@ Close
 
 
 
-<!-- IMAGE BOX -->
-
-
-<div id="images" style="
-display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 0 20px #aaa;
-">
-
-
-<h2>
-Image Upload
-</h2>
-
-
-<input type="file" accept="image/*">
-
-
-<p>
-Upload image and ask Botpress about it.
-</p>
-
-
-<button onclick="closeImages()">
-Close
-</button>
-
-
-</div>
-
-
-
 
 
 <script>
@@ -431,11 +399,9 @@ Close
 
 function newChat(){
 
-alert("New chat started 🚀");
+location.reload();
 
 }
-
-
 
 
 
@@ -456,9 +422,7 @@ document.getElementById("settings").style.display="none";
 
 function darkMode(){
 
-document.body.style.background="#202124";
-
-document.body.style.color="white";
+document.body.classList.add("dark");
 
 }
 
@@ -466,43 +430,14 @@ document.body.style.color="white";
 
 function lightMode(){
 
-document.body.style.background="white";
-
-document.body.style.color="#202124";
+document.body.classList.remove("dark");
 
 }
-
-
-
-
-function openImages(){
-
-document.getElementById("images").style.display="block";
-
-}
-
-
-function closeImages(){
-
-document.getElementById("images").style.display="none";
-
-}
-
-
-
-function openLibrary(){
-
-alert("Library coming soon 📚");
-
-}
-
 
 
 </script>
 
 
 
-
 </body>
-
 </html>
