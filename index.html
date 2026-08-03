@@ -12,151 +12,117 @@ font-family:Arial,sans-serif
 
 body{
 margin:0;
-background:#fff;
+background:white;
 color:#202124;
+overflow:hidden
 }
 
 .sidebar{
 position:fixed;
 left:0;
 top:0;
-width:250px;
+width:120px;
 height:100vh;
-padding:20px;
+padding:6px;
 background:#f8f9fa;
-border-right:1px solid #ddd;
+border-right:1px solid #ddd
 }
 
 .new{
-width:100%;
-padding:14px;
-border-radius:18px;
+width:90px;
+height:32px;
+border-radius:12px;
 border:1px solid #ddd;
 background:white;
+font-size:11px;
 font-weight:bold;
-cursor:pointer;
+white-space:nowrap;
+cursor:pointer
 }
 
 .menu{
-margin-top:25px;
+margin-top:15px
 }
 
 .menu button{
-width:100%;
-padding:12px;
-margin:5px 0;
+width:90px;
+height:32px;
+margin:4px 0;
 border:0;
 background:transparent;
-border-radius:12px;
+border-radius:10px;
+font-size:11px;
 text-align:left;
 cursor:pointer;
-font-size:15px;
+white-space:nowrap
 }
 
 .menu button:hover{
-background:#e8eaed;
+background:#e8eaed
 }
 
 .main{
-margin-left:250px;
+margin-left:120px;
 height:100vh;
 display:flex;
-flex-direction:column;
+flex-direction:column
 }
 
 .header{
-height:80px;
+height:65px;
 display:flex;
 align-items:center;
-gap:15px;
-padding:15px 25px;
-}
-
-.logo{
-width:55px;
-height:55px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-color:white;
-background:linear-gradient(135deg,#4285f4,#9333ea,#22c55e);
-box-shadow:0 0 20px #9333ea;
-animation:spin 3s infinite;
-}
-
-@keyframes spin{
-50%{
-transform:rotate(180deg)
-}
-}
-
-.title{
-font-size:36px;
-font-weight:800;
-background:linear-gradient(90deg,#4285f4,#9333ea);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.chat{
-flex:1;
-min-height:0;
-}
-
-iframe{
-width:100%;
-height:100%;
-border:0;
-display:block;
-}
-
-@media(max-width:700px){
-
-.sidebar{
-width:75px;
-padding:10px;
-}
-
-.menu button,.new{
-font-size:0;
-}
-
-.main{
-margin-left:75px;
-}
-
-.title{
-font-size:24px;
+gap:10px;
+padding:10px
 }
 
 .logo{
 width:45px;
 height:45px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+color:white;
+background:linear-gradient(135deg,#4285f4,#9333ea,#22c55e)
 }
 
+.title{
+font-size:28px;
+font-weight:800;
+background:linear-gradient(90deg,#4285f4,#9333ea);
+-webkit-background-clip:text;
+color:transparent
+}
+
+.chat{
+flex:1;
+min-height:0
+}
+
+iframe{
+width:100%;
+height:100%;
+border:0
 }
 </style>
+
 </head>
 
 <body>
 
 <div class="sidebar">
 
-<button class="new">
-＋ New Chat
-</button>
+<button class="new">＋ New Chat</button>
 
 <div class="menu">
-
 <button>🖼️ Images</button>
 <button>📚 Library</button>
 <button>💻 CodeX</button>
 <button>📁 Projects</button>
 <button>⭐ More</button>
 <button>⚙️ Settings</button>
-
 </div>
 
 </div>
@@ -165,23 +131,12 @@ height:45px;
 <div class="main">
 
 <div class="header">
-
-<div class="logo">
-✦
+<div class="logo">✦</div>
+<div class="title">Nexora AI</div>
 </div>
-
-<div class="title">
-Nexora AI
-</div>
-
-</div>
-
 
 <div class="chat">
-
-<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json">
-</iframe>
-
+<iframe src="https://cdn.botpress.cloud/webchat/v5.0/shareable.html?configUrl=https://files.bpcontent.cloud/2026/08/03/00/20260803003137-LERHAVNS.json"></iframe>
 </div>
 
 </div>
